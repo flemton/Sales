@@ -1,8 +1,12 @@
 import { View, Text, TouchableHighlight, Alert } from "react-native";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./login-styles";
 import { Form, FormItem } from "react-native-form-component";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 const Login = ({ navigation }) => {
   const emailRef = useRef();
@@ -13,10 +17,20 @@ const Login = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const auth = getAuth();
 
+  function login() {
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        console.log("Logged in");
+      })
+      .catch((error) => {
+        Alert.alert(error.message);
+      });
+  }
+
   return (
     <View style={styles.container}>
       <Form
-        onButtonPress={() => signInWithEmailAndPassword(auth, email, password)}
+        onButtonPress={() => login()}
         style={styles.form}
         buttonStyle={styles.btn}
       >
