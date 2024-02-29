@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import styles from "./home-styles";
 import { fontScale } from "../components/scale";
 import LandingNavigator from "./landing/landing";
-import Employees from "./employees/employees";
+import EmployeesNavigator from "./employees/employees";
 import Inventory from "./inventory/inventory";
 
 export default function Home() {
@@ -38,7 +38,7 @@ export default function Home() {
       />
       <BottomTab.Screen
         name="Employees"
-        component={Employees}
+        component={EmployeesNavigator}
         options={{
           headerShown: false,
           tabBarIcon: () => (
