@@ -8,18 +8,26 @@ export default function Auth() {
   const Stack = createNativeStackNavigator();
 
   return (
-    <Stack.Navigator initialRouteName="Login" screenOptions={{}}>
+    <Stack.Navigator initialRouteName="Login" screenOptions={{headerShown: false,}}>
       <Stack.Screen
         name="Login"
         component={Login}
-        options={{ headerTitle: "Welcome to Sales Login" }}
+        options={{ headerShown: true, headerTitle: "Welcome to Sales Login" }}
       />
       <Stack.Screen
         name="Register"
         component={Register}
-        options={{ headerTitle: "Register Your Store", headerBackVisible: true, headerBackTitle: "Back" }}
+        options={{
+          headerTitle: "Register Your Store",
+          headerBackVisible: true,
+          headerBackTitle: "Back",
+        }}
       />
-      <Stack.Screen name="Home" component={LandingNavigator} />
+      <Stack.Screen
+        name="Home"
+        component={LandingNavigator}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 }
