@@ -8,7 +8,10 @@ export default function Auth() {
   const Stack = createNativeStackNavigator();
 
   return (
-    <Stack.Navigator initialRouteName="Login" screenOptions={{headerShown: false,}}>
+    <Stack.Navigator
+      initialRouteName="Login"
+      screenOptions={{ headerShown: false }}
+    >
       <Stack.Screen
         name="Login"
         component={Login}
@@ -18,6 +21,7 @@ export default function Auth() {
         name="Register"
         component={Register}
         options={{
+          headerShown: true,
           headerTitle: "Register Your Store",
           headerBackVisible: true,
           headerBackTitle: "Back",
