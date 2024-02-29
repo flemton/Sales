@@ -2,7 +2,7 @@ import { Feather } from "@expo/vector-icons";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import styles from "./home-styles";
-import { fontScale, heightpoint, widthpoint } from "../components/scale";
+import { fontScale } from "../components/scale";
 import LandingNavigator from "./landing/landing";
 import Employees from "./employees/employees";
 import Inventory from "./inventory/inventory";
