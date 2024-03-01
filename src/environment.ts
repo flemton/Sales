@@ -1,4 +1,15 @@
 import * as Updates from "expo-updates";
+import {
+  FIREBASE_API_KEY,
+  FIREBASE_STORAGE_BUCKET,
+  FIREBASE_APP_ID,
+  FIREBASE_PROJECT_ID,
+  FIREBASE_AUTH_DOMAIN,
+  FIREBASE_DATABASE_URL,
+  FIREBASE_MESSAGING_SENDER_ID,
+  FIREBASE_MEASUREMENT_ID,
+  EAS_PROJECT_ID,
+} from "@env";
 
 export enum Environment {
   Production,
@@ -53,17 +64,21 @@ const ENV = {
   production: {
     environment: Environment.Production,
     firebase: {
-      apiKey: process.env.APIKEY || "AIzaSyCaxFx-s8uBqeJiGKljdXt0BlDD3THVByY",
-      authDomain: process.env.AUTH_DOMAIN || "sales-development-76f8e.firebaseapp.com",
-      projectId: process.env.PROJECT_ID || "sales-development-76f8e",
-      storageBucket: process.env.STORAGE_BUCKET || "sales-development-76f8e.appspot.com",
-      messagingSenderId: process.env.MESSAGING_SENDER_ID || "72110147544",
-      appId: process.env.APP_ID || "1:72110147544:web:caafb32420149d6f9294ad",
-      measurementId: process.env.MEASUREMENT_ID || "G-KQWJ97HRZ6",
-      databaseURL: process.env.DATABASE_URL || "https://sales-development-76f8e-default-rtdb.europe-west1.firebasedatabase.app/",
+      apiKey: FIREBASE_API_KEY || "AIzaSyCaxFx-s8uBqeJiGKljdXt0BlDD3THVByY",
+      authDomain:
+        FIREBASE_AUTH_DOMAIN || "sales-development-76f8e.firebaseapp.com",
+      projectId: FIREBASE_PROJECT_ID || "sales-development-76f8e",
+      storageBucket:
+        FIREBASE_STORAGE_BUCKET || "sales-development-76f8e.appspot.com",
+      messagingSenderId: FIREBASE_MESSAGING_SENDER_ID || "72110147544",
+      appId: FIREBASE_APP_ID || "1:72110147544:web:caafb32420149d6f9294ad",
+      measurementId: FIREBASE_MEASUREMENT_ID || "G-KQWJ97HRZ6",
+      databaseURL:
+        FIREBASE_DATABASE_URL ||
+        "https://sales-development-76f8e-default-rtdb.europe-west1.firebasedatabase.app/",
     },
     eas: {
-      projectId: process.env.EAS_PROJECT_ID,
+      projectId: EAS_PROJECT_ID,
     },
   },
 };
