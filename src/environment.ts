@@ -1,5 +1,4 @@
 import * as Updates from "expo-updates";
-import { Platform } from "react-native";
 
 export enum Environment {
   Production,
@@ -7,9 +6,7 @@ export enum Environment {
   Development,
 }
 
-const simulatorLocalMachineUrl =
-  Platform.OS === "ios" ? "localhost:8080" : "10.0.2.2";
-const localMachine = "192.168.1.35";
+const databaseURL = process.env.DATABASE_URL;
 
 const ENV = {
   development: {
@@ -22,11 +19,11 @@ const ENV = {
       messagingSenderId: "72110147544",
       appId: "1:72110147544:web:caafb32420149d6f9294ad",
       measurementId: "G-KQWJ97HRZ6",
+      databaseURL: "https://sales-development-76f8e-default-rtdb.europe-west1.firebasedatabase.app/",
     },
     eas: {
       projectId: "",
     },
-    apiUrl: `https://${localMachine}/HormesisEliteApi`,
   },
   staging: {
     environment: Environment.Staging,
@@ -38,27 +35,28 @@ const ENV = {
       messagingSenderId: "72110147544",
       appId: "1:72110147544:web:caafb32420149d6f9294ad",
       measurementId: "G-KQWJ97HRZ6",
+      databaseURL:
+        "https://sales-development-76f8e-default-rtdb.europe-west1.firebasedatabase.app/",
     },
     eas: {
       projectId: "",
     },
-    apiUrl: "",
   },
   production: {
     environment: Environment.Production,
     firebase: {
-      apiKey: "AIzaSyCaxFx-s8uBqeJiGKljdXt0BlDD3THVByY",
-      authDomain: "sales-development-76f8e.firebaseapp.com",
-      projectId: "sales-development-76f8e",
-      storageBucket: "sales-development-76f8e.appspot.com",
-      messagingSenderId: "72110147544",
-      appId: "1:72110147544:web:caafb32420149d6f9294ad",
-      measurementId: "G-KQWJ97HRZ6",
+      apiKey: process.env.apiKey,
+      authDomain: process.env.authDomain,
+      projectId: process.env.projectId,
+      storageBucket: process.env.storageBucket,
+      messagingSenderId: process.env.messagingSenderId,
+      appId: process.env.appId,
+      measurementId: process.env.measurementId,
+      databaseURL,
     },
     eas: {
-      projectId: "",
+      projectId: process.env.easProjectId,
     },
-    apiUrl: "",
   },
 };
 
