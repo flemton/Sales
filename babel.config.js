@@ -1,28 +1,23 @@
-module.exports = function(api) {
+module.exports = function (api) {
   api.cache(true);
   return {
-    presets: ['babel-preset-expo'],
+    presets: ["babel-preset-expo"],
     plugins: [
       [
-        'module-resolver',
+        "module-resolver",
         {
-          root: ['./'],
+          root: ["./"],
           alias: {
             /**
              * Regular expression is used to match all files inside `./src` directory and map each `.src/folder/[..]` to `~folder/[..]` path
              */
-            components: './src/components',
-            src: './src',
+            components: "./src/components",
+            src: "./src",
           },
-          extensions: [
-            '.js',
-            '.jsx',
-            '.json',
-            '.tsx',
-            '.ts',
-          ],
+          extensions: [".js", ".jsx", ".json", ".tsx", ".ts"],
         },
       ],
+      ["module:react-native-dotenv"],
     ],
   };
 };
