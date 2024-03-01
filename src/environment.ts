@@ -7,6 +7,13 @@ export enum Environment {
 }
 
 const databaseURL = process.env.DATABASE_URL;
+const apiKey = process.env.APIKEY;
+const authDomain = process.env.AUTH_DOMAIN;
+const projectId = process.env.PROJECT_ID;
+const storageBucket = process.env.STORAGE_BUCKET;
+const messagingSenderId = process.env.MESSAGING_SENDER_ID;
+const appId = process.env.APP_ID;
+const measurementId = process.env.MEASUREMENT_ID;
 
 const ENV = {
   development: {
@@ -19,7 +26,8 @@ const ENV = {
       messagingSenderId: "72110147544",
       appId: "1:72110147544:web:caafb32420149d6f9294ad",
       measurementId: "G-KQWJ97HRZ6",
-      databaseURL: "https://sales-development-76f8e-default-rtdb.europe-west1.firebasedatabase.app/",
+      databaseURL:
+        "https://sales-development-76f8e-default-rtdb.europe-west1.firebasedatabase.app/",
     },
     eas: {
       projectId: "",
@@ -45,17 +53,17 @@ const ENV = {
   production: {
     environment: Environment.Production,
     firebase: {
-      apiKey: process.env.apiKey,
-      authDomain: process.env.authDomain,
-      projectId: process.env.projectId,
-      storageBucket: process.env.storageBucket,
-      messagingSenderId: process.env.messagingSenderId,
-      appId: process.env.appId,
-      measurementId: process.env.measurementId,
-      databaseURL,
+      apiKey: process.env.APIKEY || "AIzaSyCaxFx-s8uBqeJiGKljdXt0BlDD3THVByY",
+      authDomain: process.env.AUTH_DOMAIN || "sales-development-76f8e.firebaseapp.com",
+      projectId: process.env.PROJECT_ID || "sales-development-76f8e",
+      storageBucket: process.env.STORAGE_BUCKET || "sales-development-76f8e.appspot.com",
+      messagingSenderId: process.env.MESSAGING_SENDER_ID || "72110147544",
+      appId: process.env.APP_ID || "1:72110147544:web:caafb32420149d6f9294ad",
+      measurementId: process.env.MEASUREMENT_ID || "G-KQWJ97HRZ6",
+      databaseURL: process.env.DATABASE_URL || "https://sales-development-76f8e-default-rtdb.europe-west1.firebasedatabase.app/",
     },
     eas: {
-      projectId: process.env.easProjectId,
+      projectId: process.env.EAS_PROJECT_ID,
     },
   },
 };
@@ -65,7 +73,7 @@ export default function env() {
   // This variable is set to true when react-native is running in Dev mode.
   // __DEV__ is true when run locally, but false when published.
   if (__DEV__) {
-    return ENV.development;
+    return ENV.production;
   }
   if (Updates.channel === "preview") {
     return ENV.staging;
