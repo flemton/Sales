@@ -4,10 +4,11 @@ import { fontScale } from "../scale";
 const styles = StyleSheet.create({
   container: {
     margin: fontScale(15),
-    justifyContent: "flex-start",
+    justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
     width: "90%",
+    alignSelf: "center",
   },
   searchBar__unclicked: {
     padding: fontScale(10),
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
   searchBar__clicked: {
     padding: fontScale(10),
     flexDirection: "row",
-    width: "80%",
+    width: "76%",
     backgroundColor: "#d9dbda",
     borderRadius: fontScale(15),
     alignItems: "center",
