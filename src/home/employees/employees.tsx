@@ -1,17 +1,25 @@
-import { View, Text, TouchableHighlight } from "react-native";
 import React from "react";
-import { getAuth, signOut } from "firebase/auth";
-import styles from "./employees-styles";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import EmployeesScreen from "./components/employees-screen/employees-screen";
+import EmployeeAdd from "./components/employee-add/employee-add";
 
-const Employees = () => {
-  const auth = getAuth();
+const EmployeesNavigator = () => {
+  const Stack = createNativeStackNavigator();
+
   return (
-    <View style={styles.container}>
-      <TouchableHighlight onPress={() => signOut(auth)}>
-        <Text>Logout</Text>
-      </TouchableHighlight>
-    </View>
+    <Stack.Navigator>
+      <Stack.Screen
+        name="EmployeesScreen"
+        component={EmployeesScreen}
+        options={{ headerTitle: "Employees" }}
+      />
+      <Stack.Screen
+        name="AddEmployee"
+        component={EmployeeAdd}
+        options={{ headerTitle: "Add Employee" }}
+      />
+    </Stack.Navigator>
   );
 };
 
-export default Employees;
+export default EmployeesNavigator;

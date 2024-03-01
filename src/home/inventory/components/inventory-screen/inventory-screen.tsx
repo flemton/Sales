@@ -1,13 +1,13 @@
 import { View, Text } from "react-native";
 import React, { useEffect, useState } from "react";
-import styles from "./landing-screen-styles";
-import Search from "../../../../components/search/search";
+import styles from "./inventory-screen-styles";
 import InventoryList from "../../../../components/inventory-list/inventory-list";
-import Cart from "../cart/cart";
-import { ref, getDatabase, child, get } from "firebase/database";
+import Search from "../../../../components/search/search";
+import { Button } from "react-native-paper";
 import { getAuth } from "firebase/auth";
+import { ref, getDatabase, child, get } from "firebase/database";
 
-const Landing = () => {
+const InventoryScreen = ({ navigation }) => {
   const [searchPhrase, setSearchPhrase] = useState("");
   const [clicked, setClicked] = useState(false);
   const [inventoryData, setInventoryData] = useState();
@@ -45,10 +45,14 @@ const Landing = () => {
           setClicked={setClicked}
           data={inventoryData ? Object.values(inventoryData) : []}
         />
-        <Cart />
+        <Button
+          mode="contained"
+          onPress={() => navigation.navigate("InventoryAdd")}
+          children={"Add Item"}
+        ></Button>
       </View>
     </View>
   );
 };
 
-export default Landing;
+export default InventoryScreen;

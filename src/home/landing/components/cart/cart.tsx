@@ -1,13 +1,10 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import styles from './cart-styles'
+import { View, Text, Alert } from "react-native";
+import React from "react";
+import styles from "./cart-styles";
+import { Button } from "react-native-paper";
 
 const Cart = () => {
-  return (
-    <View style={styles.container}>
-      <Text>Cart</Text>
-    </View>
-  )
-}
+  return <Button mode="contained" children="Checkout" style={styles.cart} onPress={() => Alert.alert("Coming soon!")}/>;
+};
 
-export default Cart
+export default Cart;

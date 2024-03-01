@@ -16,14 +16,14 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.newton.sales"
+      "bundleIdentifier": "com.flemton.sales"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.newton.sales"
+      "package": "com.flemton.sales"
     },
     "web": {
       "favicon": "./assets/favicon.png"

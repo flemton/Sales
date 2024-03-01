@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
-import { heightpoint } from "../../components/scale";
-
+import { heightpoint, widthpoint } from "../../../../components/scale";
 
 const styles = StyleSheet.create({
   container: {
@@ -8,6 +7,11 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     marginVertical: heightpoint(8),
+  },
+  btnContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: widthpoint(80),
   },
 });
 

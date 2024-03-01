@@ -23,15 +23,22 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderWidth: 1,
   },
+  btnContainer: {
+    flexDirection: "column",
+    justifyContent: "space-between",
+    width: 300,
+  },
   btn: {
     backgroundColor: "blue",
     padding: 10,
     borderRadius: 10,
     width: 300,
+    marginVertical: 10,
   },
   btnText: {
     color: "white",
     textAlign: "center",
+    fontSize: 16,
   },
 });
 
