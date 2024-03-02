@@ -45,7 +45,6 @@ const Landing = () => {
           setClicked={setClicked}
           data={inventoryData ? Object.values(inventoryData) : []}
         />
-        <Cart />
       </View>
     </View>
   );
