@@ -11,13 +11,12 @@ export default function App() {
   const [admin, setAdmin] = useState(false);
   const auth = getAuth();
   useEffect(() => {
-    console.log("Admin before: ", admin);
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setAdmin(user.email);
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setAdmin(user.email);
+      }
     });
-    console.log("Admin after: ", admin);
-    return () => unsubscribe();
-  }, [auth]);
+  }, []);
 
   return (
     <View style={styles.container}>
