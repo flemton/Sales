@@ -1,11 +1,12 @@
 import "./src/auth/config/firebase";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Home from "./src/home/home";
 import { NavigationContainer } from "@react-navigation/native";
 import Auth from "./src/auth/auth";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
+import { Provider } from "react-redux";
+import { store } from "./src/store";
 
 export default function App() {
   const [admin, setAdmin] = useState(false);
@@ -20,7 +21,9 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <NavigationContainer>{admin ? <Home /> : <Auth />}</NavigationContainer>
+      <NavigationContainer>
+        <Provider store={store}>{admin ? <Home /> : <Auth />}</Provider>
+      </NavigationContainer>
     </View>
   );
 }
