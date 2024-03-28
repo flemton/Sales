@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import styles from "./register-styles";
 import { Form, FormItem } from "react-native-form-component";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
-import { getDatabase, ref, set } from "firebase/database";
+import createStore from "./components/create-store";
 
 const Register = ({ navigation }) => {
   const emailRef = useRef();
@@ -16,19 +16,6 @@ const Register = ({ navigation }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const auth = getAuth();
 
-  function createStore(store, email, imageUrl, uid) {
-    const db = getDatabase();
-    set(ref(db, "stores/" + email.split("@")[0].toLocaleLowerCase()), {
-      name: store,
-      admin: email,
-      store_logo: imageUrl,
-      users: {
-        [uid]: { username: "Admin", email: email, profile_picture: imageUrl },
-      },
-      inventory: null,
-    });
-  }
-
   async function signUp() {
     if (password !== confirmPassword) {
       Alert.alert("Passwords do not match");
@@ -37,12 +24,12 @@ const Register = ({ navigation }) => {
     try {
       await createUserWithEmailAndPassword(auth, email, password)
         .then((cred) => {
-          createStore(
+          createStore({
             store,
             email,
-            "https://example.com/profile.jpg",
-            cred.user.uid
-          );
+            imageUrl: "https://example.com/profile.jpg",
+            uid: cred.user.uid,
+          });
         })
         .finally(() => {
           Alert.alert("Store Username: ", email.split("@")[0]);
